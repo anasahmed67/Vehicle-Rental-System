@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Rental System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .navbar {
+            background: rgba(0, 0, 0, 0.8) !important;
+            backdrop-filter: blur(10px);
+        }
+        .hero-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-top: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        .feature-card {
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+        .btn-custom {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border: none;
+            border-radius: 25px;
+            padding: 10px 30px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .btn-custom:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        .hero-title {
+            font-weight: 700;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .hero-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/dashboard">
+                <i class="fas fa-car"></i> Vehicle Rental System
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/vehicles"><i class="fas fa-car-side"></i> Vehicles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/customers"><i class="fas fa-users"></i> Customers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/employees"><i class="fas fa-user-tie"></i> Employees</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/rentals"><i class="fas fa-calendar-check"></i> Rentals</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/payments"><i class="fas fa-credit-card"></i> Payments</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="hero-section text-center">
+            <h1 class="display-4 hero-title">Welcome to Vehicle Rental System</h1>
+            <p class="lead hero-subtitle">Manage your vehicle rentals efficiently with our modern, comprehensive system.</p>
+            <hr class="my-4" style="border-color: rgba(255, 255, 255, 0.3);">
+            <p class="hero-subtitle">Explore our features below:</p>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card feature-card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-car feature-icon"></i>
+                        <h5 class="card-title">Vehicles</h5>
+                        <p class="card-text">Add and manage your fleet of vehicles with ease.</p>
+                        <a href="/vehicles" class="btn btn-custom">View Vehicles</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card feature-card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-users feature-icon"></i>
+                        <h5 class="card-title">Customers</h5>
+                        <p class="card-text">Manage customer information and records seamlessly.</p>
+                        <a href="/customers" class="btn btn-custom">View Customers</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card feature-card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-user-tie feature-icon"></i>
+                        <h5 class="card-title">Employees</h5>
+                        <p class="card-text">Handle employee data and roles efficiently.</p>
+                        <a href="/employees" class="btn btn-custom">View Employees</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="card feature-card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-calendar-check feature-icon"></i>
+                        <h5 class="card-title">Rentals</h5>
+                        <p class="card-text">Track and manage vehicle rentals in real-time.</p>
+                        <a href="/rentals" class="btn btn-custom">View Rentals</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="card feature-card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-credit-card feature-icon"></i>
+                        <h5 class="card-title">Payments</h5>
+                        <p class="card-text">Monitor payment records and transactions securely.</p>
+                        <a href="/payments" class="btn btn-custom">View Payments</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

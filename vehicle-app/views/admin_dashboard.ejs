@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard - Vehicle Rental System</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+              body {
+                  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                  min-height: 100vh;
+                  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+              }
+              .navbar {
+                  background: rgba(0, 0, 0, 0.8) !important;
+                  backdrop-filter: blur(10px);
+              }
+              .dashboard-card {
+                  background: rgba(255, 255, 255, 0.95);
+                  border: none;
+                  border-radius: 15px;
+                  transition: all 0.3s ease;
+                  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+              }
+              .dashboard-card:hover {
+                  transform: translateY(-5px);
+                  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+              }
+              .feature-icon {
+                  font-size: 3rem;
+                  margin-bottom: 1rem;
+                  color: #667eea;
+              }
+              .btn-custom {
+                  background: linear-gradient(45deg, #667eea, #764ba2);
+                  border: none;
+                  border-radius: 25px;
+                  padding: 10px 30px;
+                  color: white;
+                  transition: all 0.3s ease;
+              }
+              .btn-custom:hover {
+                  transform: scale(1.05);
+                  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+              }
+              .summary-section {
+                  background: rgba(255, 255, 255, 0.1);
+                  backdrop-filter: blur(10px);
+                  border-radius: 20px;
+                  padding: 2rem;
+                  margin-bottom: 2rem;
+              }
+              .summary-card {
+                  background: rgba(255, 255, 255, 0.95);
+                  border: none;
+                  border-radius: 15px;
+                  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                  position: relative;
+                  overflow: hidden;
+              }
+              .summary-card::before {
+                  content: '';
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  right: 0;
+                  height: 4px;
+                  background: linear-gradient(45deg, #667eea, #764ba2);
+              }
+              .summary-card:hover {
+                  transform: translateY(-8px) scale(1.02);
+                  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+              }
+              .icon-wrapper {
+                  background: linear-gradient(135deg, #667eea, #764ba2);
+                  width: 60px;
+                  height: 60px;
+                  border-radius: 50%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  margin: 0 auto 1rem;
+                  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+              }
+              .summary-icon {
+                  font-size: 1.8rem;
+                  color: white;
+              }
+              .summary-number {
+                  font-size: 2.5rem;
+                  font-weight: 700;
+                  color: #333;
+                  margin-bottom: 0.5rem;
+              }
+              .summary-section {
+                  animation: fadeInUp 1s ease-out;
+              }
+              @keyframes fadeInUp {
+                  from {
+                      opacity: 0;
+                      transform: translateY(30px);
+                  }
+                  to {
+                      opacity: 1;
+                      transform: translateY(0);
+                  }
+              }
+              .summary-card {
+                  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+              }
+              .summary-card:hover {
+                  transform: translateY(-8px) scale(1.02);
+                  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+              }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <a class="navbar-brand" href="/dashboard">
+          <i class="fas fa-tachometer-alt"></i> Vehicle Rental System
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <form method="POST" action="/logout" class="d-inline">
+                <button type="submit" class="btn btn-outline-light">
+                  Logout
+                </button>
+              </form>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mt-5">
+      <h1 class="text-center text-white mb-5">Admin Dashboard</h1>
+
+        <!-- Summary Section -->
+        <div class="summary-section mb-5">
+            <div class="row justify-content-center">
+          <div class="col-lg-2 col-md-4 mb-4">
+            <div class="card summary-card h-100">
+              <div class="card-body text-center">
+                <div class="icon-wrapper">
+                  <i class="fas fa-car summary-icon"></i>
+                </div>
+                <h2 class="summary-number"><%= summary.vehicles %></h2>
+                <h6 class="card-title text-muted">Vehicles</h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-4 mb-4">
+            <div class="card summary-card h-100">
+              <div class="card-body text-center">
+                <div class="icon-wrapper">
+                  <i class="fas fa-users summary-icon"></i>
+                </div>
+                <h2 class="summary-number"><%= summary.customers %></h2>
+                <h6 class="card-title text-muted">Customers</h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-4 mb-4">
+            <div class="card summary-card h-100">
+              <div class="card-body text-center">
+                <div class="icon-wrapper">
+                  <i class="fas fa-user-tie summary-icon"></i>
+                </div>
+                <h2 class="summary-number"><%= summary.employees %></h2>
+                <h6 class="card-title text-muted">Employees</h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-4 mb-4">
+            <div class="card summary-card h-100">
+              <div class="card-body text-center">
+                <div class="icon-wrapper">
+                  <i class="fas fa-calendar-check summary-icon"></i>
+                </div>
+                <h2 class="summary-number"><%= summary.rentals %></h2>
+                <h6 class="card-title text-muted">Rentals</h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-4 mb-4">
+            <div class="card summary-card h-100">
+              <div class="card-body text-center">
+                <div class="icon-wrapper">
+                  <i class="fas fa-credit-card summary-icon"></i>
+                </div>
+                <h2 class="summary-number"><%= summary.payments %></h2>
+                <h6 class="card-title text-muted">Payments</h6>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <h2 class="text-center text-white mb-4">Management Options</h2>
+      <div class="row">
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card dashboard-card h-100">
+            <div class="card-body text-center">
+              <i class="fas fa-car feature-icon"></i>
+              <h5 class="card-title">Vehicles</h5>
+              <p class="card-text">Manage vehicle inventory</p>
+              <a href="/vehicles" class="btn btn-custom">Manage Vehicles</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card dashboard-card h-100">
+            <div class="card-body text-center">
+              <i class="fas fa-users feature-icon"></i>
+              <h5 class="card-title">Customers</h5>
+              <p class="card-text">Manage customer records</p>
+              <a href="/customers" class="btn btn-custom">Manage Customers</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card dashboard-card h-100">
+            <div class="card-body text-center">
+              <i class="fas fa-user-tie feature-icon"></i>
+              <h5 class="card-title">Employees</h5>
+              <p class="card-text">Manage employee data</p>
+              <a href="/employees" class="btn btn-custom">Manage Employees</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card dashboard-card h-100">
+            <div class="card-body text-center">
+              <i class="fas fa-calendar-check feature-icon"></i>
+              <h5 class="card-title">Rentals</h5>
+              <p class="card-text">Track rental activities</p>
+              <a href="/rentals" class="btn btn-custom">Manage Rentals</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 mb-4">
+          <div class="card dashboard-card h-100">
+            <div class="card-body text-center">
+              <i class="fas fa-credit-card feature-icon"></i>
+              <h5 class="card-title">Payments</h5>
+              <p class="card-text">Monitor payment transactions</p>
+              <a href="/payments" class="btn btn-custom">Manage Payments</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 mb-4">
+          <div class="card dashboard-card h-100">
+            <div class="card-body text-center">
+              <i class="fas fa-chart-line feature-icon"></i>
+              <h5 class="card-title">Reports</h5>
+              <p class="card-text">Download rental reports</p>
+              <a href="/download_report" class="btn btn-custom"
+                >Download Report</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
